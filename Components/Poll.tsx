@@ -106,12 +106,15 @@ const Poll: React.FC<PollProps> = ({ question, options, id }) => {
           </button>
         </form>
       </motion.div>
-      <div className="  w-full ">
+     {votes.length>0 && <div className=" w-full ">
         <div className="p-4 max-w-[40rem] mx-auto rounded-2xl shadow-lg bg-neutral-900">
           <h2 className="font-bold text-2xl mb-4 text-center"> Result...!!!</h2>
           {votes?.map((count, index) => (
             <div key={index} className="flex flex-col gap-2 mt-6">
-              {options[index]}:{" "}
+              <span className="font-2xl font-bold">
+                {" "}
+                {options[index]} : {count}
+              </span>
               <div className="w-full bg-gray-200 rounded-md dark:bg-gray-700">
                 <div
                   className="bg-blue-600 text-lg font-medium text-blue-100 text-center p-0.5 leading-none rounded-sm"
@@ -124,7 +127,7 @@ const Poll: React.FC<PollProps> = ({ question, options, id }) => {
             </div>
           ))}
         </div>
-      </div>
+      </div>}
     </div>
   );
 };
